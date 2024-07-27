@@ -85,7 +85,7 @@ bot.start(async (ctx) => {
         reply_markup:  Markup.inlineKeyboard([
           Markup.button.webApp(
             'Открыть приложение',
-            "https://2813-79-137-207-161.ngrok-free.app" + `/profile`
+            WEB_URL + `/profile`
           ),
           ]).reply_markup
     })
@@ -100,7 +100,7 @@ bot.start(async (ctx) => {
       Markup.inlineKeyboard([
         Markup.button.webApp(
           'Открыть приложение',
-          "https://2813-79-137-207-161.ngrok-free.app" + `/profile`
+          WEB_URL + `/profile`
         ),
       ])
     );

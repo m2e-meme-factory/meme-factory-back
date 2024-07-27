@@ -1,10 +1,10 @@
 module.exports = {
     apps: [
         {
-            name: "transfer-back",
+            name: "meme-factory-back",
             script: "yarn",
             automation: false,
-            args: "run dstart",
+            args: "start",
         }
     ]
 }
