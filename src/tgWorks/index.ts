@@ -96,7 +96,10 @@ bot.start(async (ctx) => {
 
   if (!user?.isVerified) {
     return await ctx.reply(
-      'Перед использованием Transfer bot необходимо пройти верификацию:',
+      `
+👋 Welcome to Meme Factory! 🎉
+Your meme to earn platform. 
+      `,
       Markup.inlineKeyboard([
         Markup.button.webApp(
           'Открыть приложение',
