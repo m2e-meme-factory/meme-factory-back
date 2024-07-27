@@ -1,0 +1,63 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  telegramId String @id @unique
+  username   String
+
+  isBaned    Boolean @default(false)
+  isVerified Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  tasks            Task[]
+
+
+  refId        String?
+  ref_uuid      String
+  userInfo   UserInfo?
+
+  undelitableMessages UndelitableMessage[]
+  // urlAuths UrlAuth[]
+}
+
+// model UrlAuth {
+//   id        String      @id
+//   createdAt DateTime @default(now())
+//   user      User     @relation(fields: [userId], references: [telegramId])
+//   userId    String
+//   isExpired Boolean @default(false)
+// }
+
+model UserInfo {
+  id     Int    @id @default(autoincrement())
+  user   User   @relation(fields: [userId], references: [telegramId])
+  userId String @unique
+
+  name        String
+  phoneNumber String
+  email       String
+}
+
+
+model Task {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [telegramId])
+  createdAt DateTime @default(now())
+  userId    String
+
+  data String  @default("")
+  done Boolean @default(false)
+}
+
+model UndelitableMessage {
+  message_id        String      @id
+  user      User     @relation(fields: [userId], references: [telegramId])
+  userId    String
+}
